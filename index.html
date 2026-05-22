@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sagefarm – Mutual Fund Tools & Calculators</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+
+
+  <!-- SAGEFARM HEADER -->
+  <!-- <header class="sf-header">
+    <!-- Needs to add header content -->
+  <!-- </header>  -->
+
+
+  
+  <!-- TOOLS GRID PAGE -->
+  <div id="tools-page">
+    <div class="main">
+      <div class="page-title">Mutual Fund Tools and Calculators</div>
+      <div class="tools-grid">
+
+        <div class="tool-card" onclick="openCalc('sip')">
+          <div class="tool-icon">
+            <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="6" width="28" height="36" rx="4" stroke="#00c48c" stroke-width="2" fill="none" />
+              <text x="14" y="20" font-size="7" font-weight="700" fill="#00c48c">SIP</text>
+              <line x1="12" y1="26" x2="32" y2="26" stroke="#00c48c" stroke-width="1.5" />
+              <line x1="12" y1="31" x2="28" y2="31" stroke="#00c48c" stroke-width="1.5" />
+              <rect x="30" y="28" width="14" height="14" rx="2" fill="none" stroke="#00c48c" stroke-width="1.5" />
+              <path d="M33 38 L35 34 L37 36 L39 31 L41 33" stroke="#00c48c" stroke-width="1.2" fill="none" />
+            </svg>
+          </div>
+          <h3>SIP Calculator</h3>
+          <p>Know returns from SIP or plan a future goal</p>
+          <div class="btn-outline">Calculate Now</div>
+        </div>
+
+        <div class="tool-card" onclick="openCalc('stepup')">
+          <div class="tool-icon">
+            <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="6" width="26" height="34" rx="4" stroke="#00c48c" stroke-width="2" fill="none" />
+              <text x="13" y="19" font-size="6.5" font-weight="700" fill="#00c48c">SIP</text>
+              <path d="M10 40 L16 34 L20 36 L26 28 L32 20 L38 14" stroke="#00c48c" stroke-width="2" fill="none"
+                stroke-linecap="round" />
+              <polyline points="36,14 38,14 38,16" stroke="#00c48c" stroke-width="2" />
+            </svg>
+          </div>
+          <h3>Step Up SIP Calculator</h3>
+          <p>See how increasing SIP each year accelerates returns</p>
+          <div class="btn-outline">Calculate Now</div>
+        </div>
+
+        <div class="tool-card" onclick="openCalc('lumpsum')">
+          <div class="tool-icon">
+            <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="26" cy="14" rx="14" ry="8" stroke="#00c48c" stroke-width="2" fill="none" />
+              <path d="M12 14 v10 c0 4.4 6.3 8 14 8s14-3.6 14-8V14" stroke="#00c48c" stroke-width="2" fill="none" />
+              <text x="22" y="18" font-size="9" fill="#00c48c" font-weight="700">₹</text>
+            </svg>
+          </div>
+          <h3>Lumpsum Calculator</h3>
+          <p>Know returns from Lumpsum investment or plan a future goal</p>
+          <div class="btn-outline">Calculate Now</div>
+        </div>
+
+
+        <div class="tool-card" onclick="openCalc('swp')">
+          <div class="tool-icon">
+            <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="26" cy="26" r="16" stroke="#00c48c" stroke-width="2" fill="none" />
+              <path d="M20 22 Q26 16 32 22 Q26 28 20 22Z" fill="none" stroke="#00c48c" stroke-width="1.5" />
+              <path d="M26 26 v8" stroke="#00c48c" stroke-width="2" stroke-linecap="round" />
+              <path d="M22 31 h8" stroke="#00c48c" stroke-width="1.5" />
+              <text x="22" y="26" font-size="8" fill="#00c48c" font-weight="700">₹</text>
+            </svg>
+          </div>
+          <h3>SWP Calculator</h3>
+          <p>Plan your systematic withdrawal from mutual funds</p>
+          <div class="btn-outline">Calculate Now</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CALCULATOR PAGE -->
+  <div id="calc-page" style="display:none;">
+    <div class="main">
+      <div class="breadcrumb">
+        <span onclick="showTools()">Home</span> ›
+        <!-- <span onclick="showTools()">Tools &amp; Calculators</span> › -->
+        <span id="breadcrumb-name"></span>
+      </div>
+      <div class="calc-title" id="calc-title"></div>
+
+      <!-- Calculator Card -->
+      <div class="calc-card">
+        <h2 id="calc-subtitle"></h2>
+        <div class="radio-group" id="radio-group"></div>
+        <div class="sliders-row" id="sliders-row"></div>
+
+        <!-- SWP Special: retirement banner -->
+        <div id="swp-banner" style="display:none;" class="swp-banner">
+          <div class="swp-banner-icon">🌾</div>
+          <div>
+            <div class="swp-banner-title">Invest today for Income post retirement</div>
+            <div class="swp-banner-sub">Your SIP builds the corpus. Your SWP provides the pension.</div>
+          </div>
+        </div>
+
+        <div class="results-row">
+          <div class="chart-area" id="chart-area">
+            <div class="chart-top-label" id="chart-label">Investment growth year by year</div>
+            <div class="chart-legend" id="chart-legend">
+              <span class="legend-item"><span class="legend-dot"
+                  style="background:var(--blue-bar)"></span>Invested</span>
+              <span class="legend-item"><span class="legend-dot" style="background:var(--orange)"></span>Returns</span>
+              <!-- <span class="legend-item"><span class="legend-dot trend-dot"></span>Trend</span> -->
+            </div>
+            <div class="chart-wrap">
+              <canvas id="myChart" height="220"></canvas>
+            </div>
+          </div>
+          <div>
+            <div class="results-summary" id="results-summary"></div>
+            <div class="results-insights" id="results-insights"></div>
+          </div>
+        </div>
+
+        <!-- SWP Phase Summary Table (shown only for SWP) -->
+        <div id="swp-phase-table" style="display:none;" class="swp-phase-section">
+          <h3 class="swp-phase-title">SIP + SWP Phase Summary</h3>
+          <table class="swp-table">
+            <thead>
+              <tr>
+                <th>Parameter</th>
+                <th>SIP Phase</th>
+                <th>SWP Phase</th>
+              </tr>
+            </thead>
+            <tbody id="swp-table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- Monthly Breakdown Table (all calculators) -->
+        <div id="monthly-table-section" style="display:none;" class="monthly-breakdown-section">
+          <div class="monthly-breakdown-header">
+            <h3 class="monthly-breakdown-title" id="monthly-table-title">Monthly Breakdown</h3>
+            <!-- <button class="btn-toggle-table" id="btn-toggle-table" onclick="toggleMonthlyTable()">▼ Show Table</button> -->
+          </div>
+          <div id="monthly-table-wrap" style="display:none;">
+            <div class="monthly-table-scroll">
+              <table class="monthly-detail-table" id="monthly-detail-table">
+                <thead id="monthly-detail-thead"></thead>
+                <tbody id="monthly-detail-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info Section -->
+      <div class="info-section">
+        <div>
+          <div class="toc" id="toc-nav"></div>
+        </div>
+        <div class="info-content" id="info-content"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="calculators.js"></script>
+  <script src="app.js"></script>
+</body>
+
+<!-- SAGEFARM FOOTER -->
+<footer class="sf-footer">
+  <!-- Needs to add according to the sagefarm footer -->
+</footer>
+
+</html>
