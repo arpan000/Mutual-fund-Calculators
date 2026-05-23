@@ -4,6 +4,7 @@ A modern Mutual Fund Calculator web application built using HTML, CSS, and JavaS
 
 This project provides multiple financial calculators including SIP, Lumpsum, Step-Up SIP, and SWP calculators with interactive charts and detailed investment analysis.
 
+Link: https://mutualfundcal.netlify.app/
 ---
 
 # Features
